@@ -54,7 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ENUMs\PlantCategory.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="LogEntry.cs" />
+    <Compile Include="Plant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
