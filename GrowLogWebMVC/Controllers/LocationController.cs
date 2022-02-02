@@ -47,6 +47,59 @@ namespace GrowLogWebMVC.Controllers
             return View(model);
         }
 
+        // GET
+        public ActionResult Details(int id)
+        {
+            var svc = CreateLocationService();
+            var model = svc.GetLocationById(id);
+
+            return View(model);
+        }
+
+        // GET
+        public ActionResult Edit(int id)
+        {
+            var service = CreateLocationService();
+            var detail = service.GetLocationById(id);
+            var model =
+                new LocationDetail
+                {
+                    ID = detail.ID,
+                    Name = detail.Name,
+                    Description = detail.Description
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, LocationDetail model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ID != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateLocationService();
+
+            if (service.UpdateLocation(model))
+            {
+                TempData["SaveResult"] = "Your Location was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Location could not be updated.");
+            return View(model);
+        }
+
+
+
+
+
+
         private LocationService CreateLocationService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

@@ -56,5 +56,44 @@ namespace GrowLog.Services
             }
         }
 
+        public LocationDetail GetLocationById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Locations
+                        .Single(e => e.ID == id && e.OwnerId == _userId);
+                return
+                    new LocationDetail
+                    {
+                        ID = entity.ID,
+                        Name = entity.Name,
+                        Description = entity.Description
+                    };
+            }
+        }
+
+        public bool UpdateLocation(LocationDetail model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Locations
+                        .Single(e => e.ID == model.ID && e.OwnerId == _userId);
+
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+
+
+
+
     }
 }
