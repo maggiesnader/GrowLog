@@ -95,7 +95,28 @@ namespace GrowLogWebMVC.Controllers
             return View(model);
         }
 
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateLocationService();
+            var model = svc.GetLocationById(id);
 
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateLocationService();
+
+            service.DeleteLocation(id);
+
+            TempData["SaveResult"] = "Your Location was deleted.";
+
+            return RedirectToAction("Index");
+        }
 
 
 

@@ -90,6 +90,19 @@ namespace GrowLog.Services
             }
         }
 
+        public bool DeleteLocation(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Locations
+                        .Single(e => e.ID == id && e.OwnerId == _userId);
+                ctx.Locations.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
 
