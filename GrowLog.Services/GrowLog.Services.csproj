@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LocationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GrowLog.Data\GrowLog.Data.csproj">
+      <Project>{3eb2b1e7-a2c9-4693-903f-01023483194d}</Project>
+      <Name>GrowLog.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrowLog.Models\GrowLog.Models.csproj">
+      <Project>{46c103a8-aee2-469e-a0d2-951a4184369c}</Project>
+      <Name>GrowLog.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
