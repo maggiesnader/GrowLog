@@ -9,7 +9,7 @@ namespace GrowLog.Models
     public class LocationListItem
     {
 
-        public int ID { get; set; }
+        public int LocationID { get; set; }
         public string Name { get; set; }
 
 

@@ -11,17 +11,19 @@ namespace GrowLog.Data.Migrations
                 "dbo.Location",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        LocationID = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.LocationID);
             
             CreateTable(
                 "dbo.LogEntry",
                 c => new
                     {
                         LogEntryID = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
@@ -36,16 +38,17 @@ namespace GrowLog.Data.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         HarvestSeason = c.Time(nullable: false, precision: 7),
                         PlantingSeason = c.Time(nullable: false, precision: 7),
                         TypeOfPlantCategory = c.Int(nullable: false),
-                        LocationID = c.Int(nullable: false),
+                        LocID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Location", t => t.LocationID, cascadeDelete: true)
-                .Index(t => t.LocationID);
+                .ForeignKey("dbo.Location", t => t.LocID, cascadeDelete: true)
+                .Index(t => t.LocID);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -126,12 +129,12 @@ namespace GrowLog.Data.Migrations
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.LogEntry", "PlantID", "dbo.Plant");
-            DropForeignKey("dbo.Plant", "LocationID", "dbo.Location");
+            DropForeignKey("dbo.Plant", "LocID", "dbo.Location");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Plant", new[] { "LocationID" });
+            DropIndex("dbo.Plant", new[] { "LocID" });
             DropIndex("dbo.LogEntry", new[] { "PlantID" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");

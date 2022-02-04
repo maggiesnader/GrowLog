@@ -7,12 +7,12 @@ namespace GrowLog.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Location", "OwnerId", c => c.Guid(nullable: false));
+            AlterColumn("dbo.Plant", "HarvestSeason", c => c.Time(precision: 7));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Location", "OwnerId");
+            AlterColumn("dbo.Plant", "HarvestSeason", c => c.Time(nullable: false, precision: 7));
         }
     }
 }

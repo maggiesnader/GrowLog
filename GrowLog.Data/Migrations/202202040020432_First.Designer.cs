@@ -13,7 +13,7 @@ namespace GrowLog.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202201312151067_First"; }
+            get { return "202202040020432_First"; }
         }
         
         string IMigrationMetadata.Source

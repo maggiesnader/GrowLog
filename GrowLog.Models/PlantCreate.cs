@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrowLog.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrowLog.Data
+namespace GrowLog.Models
 {
-    public class Location
+    public class PlantCreate
     {
-        [Key]
-        public int LocationID { get; set; }
-
-        [Required]
-        public Guid OwnerId { get; set; }
-        
         [Required]
         public string Name { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
+        public TimeSpan HarvestSeason { get; set; }
+
+        public TimeSpan PlantingSeason { get; set; }
+
+        public PlantCategory TypeOfPlantCategory { get; set; }
+
+        public int LocID { get; set; }
     }
 }

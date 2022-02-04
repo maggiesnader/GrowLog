@@ -14,6 +14,9 @@ namespace GrowLog.Data
         public int LogEntryID { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]

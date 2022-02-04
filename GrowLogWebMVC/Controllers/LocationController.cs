@@ -64,7 +64,7 @@ namespace GrowLogWebMVC.Controllers
             var model =
                 new LocationDetail
                 {
-                    ID = detail.ID,
+                    LocationID = detail.LocationID,
                     Name = detail.Name,
                     Description = detail.Description
                 };
@@ -77,7 +77,7 @@ namespace GrowLogWebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ID != id)
+            if (model.LocationID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

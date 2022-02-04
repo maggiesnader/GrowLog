@@ -46,7 +46,7 @@ namespace GrowLog.Services
                         e =>
                             new LocationListItem
                             {
-                                ID = e.ID,
+                                LocationID = e.LocationID,
                                 Name = e.Name
                             }
 
@@ -63,11 +63,11 @@ namespace GrowLog.Services
                 var entity =
                     ctx
                         .Locations
-                        .Single(e => e.ID == id && e.OwnerId == _userId);
+                        .Single(e => e.LocationID == id && e.OwnerId == _userId);
                 return
                     new LocationDetail
                     {
-                        ID = entity.ID,
+                        LocationID = entity.LocationID,
                         Name = entity.Name,
                         Description = entity.Description
                     };
@@ -81,7 +81,7 @@ namespace GrowLog.Services
                 var entity =
                     ctx
                         .Locations
-                        .Single(e => e.ID == model.ID && e.OwnerId == _userId);
+                        .Single(e => e.LocationID == model.LocationID && e.OwnerId == _userId);
 
                 entity.Name = model.Name;
                 entity.Description = model.Description;
@@ -97,7 +97,7 @@ namespace GrowLog.Services
                 var entity =
                     ctx
                         .Locations
-                        .Single(e => e.ID == id && e.OwnerId == _userId);
+                        .Single(e => e.LocationID == id && e.OwnerId == _userId);
                 ctx.Locations.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

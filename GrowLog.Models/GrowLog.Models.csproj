@@ -57,11 +57,20 @@
     <Compile Include="LocationCreate.cs" />
     <Compile Include="LocationListItem.cs" />
     <Compile Include="LocationDetail.cs" />
+    <Compile Include="PlantCreate.cs" />
+    <Compile Include="PlantDetail.cs" />
+    <Compile Include="PlantListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GrowLog.Data\GrowLog.Data.csproj">
+      <Project>{3EB2B1E7-A2C9-4693-903F-01023483194D}</Project>
+      <Name>GrowLog.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
