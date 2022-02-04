@@ -39,41 +39,43 @@
         </div>
     </div>
 
-
-
-
-
-
     <div class="form-group">
-        @Html.LabelFor(model => model.HarvestSeason, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.HarvestSeasonStart, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PlantingSeason, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.HarvestSeason, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.HarvestSeasonStart, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HarvestSeasonStart, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PlantingSeason, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.HarvestSeasonEnd, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PlantingSeason, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PlantingSeason, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.HarvestSeasonEnd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HarvestSeasonEnd, "", new { @class = "text-danger" })
         </div>
     </div>
 
-
-
-
-
-
-
-
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.PlantingSeasonStart, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PlantingSeasonStart, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PlantingSeasonStart, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LocID, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.PlantingSeasonEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PlantingSeasonEnd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PlantingSeasonEnd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LocationID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("LocationID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LocID, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
         </div>
     </div>
 

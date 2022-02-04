@@ -22,15 +22,29 @@ namespace GrowLog.Data
         [Required]
         public string Description { get; set; }
         
-        public TimeSpan? HarvestSeason { get; set; }
-        
-        public TimeSpan PlantingSeason { get; set; }
-        
+        [Display(Name = "Start of Harvest Season")]
+        [DataType(DataType.Date)]
+        public DateTime? HarvestSeasonStart { get; set; }
+
+        [Display(Name = "End of Harvest Season")]
+        [DataType(DataType.Date)]
+        public DateTime? HarvestSeasonEnd { get; set; }
+
+        [Display(Name = "Start of Planting Season")]
+        [DataType(DataType.Date)]
+        public DateTime? PlantingSeasonStart { get; set; }
+
+        [Display(Name = "End of Planting Season")]
+        [DataType(DataType.Date)]
+        public DateTime? PlantingSeasonEnd { get; set; }
+
         [Required]
+        [Display(Name = "Type Of Plant")]
         public PlantCategory TypeOfPlantCategory { get; set; }
 
         [ForeignKey("Location")]
-        public int LocID { get; set; }
+        [Display(Name = "Location Name")]
+        public int LocationID { get; set; }
         public virtual Location Location { get; set; }
     }
 }

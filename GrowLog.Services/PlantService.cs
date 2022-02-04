@@ -26,10 +26,12 @@ namespace GrowLog.Services
                     OwnerId = _userId,
                     Name = model.Name,
                     Description = model.Description,
-                    HarvestSeason = model.HarvestSeason,
-                    PlantingSeason = model.PlantingSeason,
+                    HarvestSeasonStart = model.HarvestSeasonStart,
+                    HarvestSeasonEnd = model.HarvestSeasonEnd,
+                    PlantingSeasonStart = model.PlantingSeasonStart,
+                    PlantingSeasonEnd = model.PlantingSeasonEnd,
                     TypeOfPlantCategory = model.TypeOfPlantCategory,
-                    LocID = model.LocID
+                    LocationID = model.LocationID
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -73,10 +75,12 @@ namespace GrowLog.Services
                         ID = entity.ID,
                         Name = entity.Name,
                         Description = entity.Description,
-                        HarvestSeason = entity.HarvestSeason,
-                        PlantingSeason = entity.PlantingSeason,
+                        HarvestSeasonStart = entity.HarvestSeasonStart,
+                        HarvestSeasonEnd = entity.HarvestSeasonEnd,
+                        PlantingSeasonStart = entity.PlantingSeasonStart,
+                        PlantingSeasonEnd = entity.PlantingSeasonEnd,
                         TypeOfPlantCategory = entity.TypeOfPlantCategory,
-                        LocID = entity.LocID
+                        LocationID = entity.LocationID
                     };
             }
         }
