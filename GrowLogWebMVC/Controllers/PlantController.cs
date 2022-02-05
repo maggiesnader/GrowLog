@@ -106,12 +106,28 @@ namespace GrowLogWebMVC.Controllers
             return View(model);
         }
 
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreatePlantService();
+            var model = svc.GetPlantById(id);
 
+            return View(model);
+        }
 
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreatePlantService();
 
+            service.DeletePlant(id);
 
+            TempData["SaveResult"] = "Your Plant was deleted.";
 
-
+            return RedirectToAction("Index");
+        }
 
 
 

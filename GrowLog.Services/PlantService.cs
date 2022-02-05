@@ -109,7 +109,19 @@ namespace GrowLog.Services
             }
         }
 
+        public bool DeletePlant(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Plants
+                        .Single(e => e.PlantID == id && e.OwnerId == _userId);
+                ctx.Plants.Remove(entity);
 
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
 
