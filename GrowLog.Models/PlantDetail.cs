@@ -10,7 +10,10 @@ namespace GrowLog.Models
 {
     public class PlantDetail
     {
-        public int ID { get; set; }
+        [Key]
+        public int PlantID { get; set; }
+
+        public Guid OwnerId { get; set; }
 
         public string Name { get; set; }
 

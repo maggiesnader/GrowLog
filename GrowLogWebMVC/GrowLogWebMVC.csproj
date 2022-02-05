@@ -286,6 +286,8 @@
     <Content Include="Views\Location\Delete.cshtml" />
     <Content Include="Views\Plant\Index.cshtml" />
     <Content Include="Views\Plant\Create.cshtml" />
+    <Content Include="Views\Plant\Edit.cshtml" />
+    <Content Include="Views\Plant\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

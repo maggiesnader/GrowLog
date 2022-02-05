@@ -3,7 +3,7 @@ namespace GrowLog.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class First : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -37,7 +37,7 @@ namespace GrowLog.Data.Migrations
                 "dbo.Plant",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        PlantID = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
@@ -46,11 +46,11 @@ namespace GrowLog.Data.Migrations
                         PlantingSeasonStart = c.DateTime(),
                         PlantingSeasonEnd = c.DateTime(),
                         TypeOfPlantCategory = c.Int(nullable: false),
-                        LocID = c.Int(nullable: false),
+                        LocationID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Location", t => t.LocID, cascadeDelete: true)
-                .Index(t => t.LocID);
+                .PrimaryKey(t => t.PlantID)
+                .ForeignKey("dbo.Location", t => t.LocationID, cascadeDelete: true)
+                .Index(t => t.LocationID);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -131,12 +131,12 @@ namespace GrowLog.Data.Migrations
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.LogEntry", "PlantID", "dbo.Plant");
-            DropForeignKey("dbo.Plant", "LocID", "dbo.Location");
+            DropForeignKey("dbo.Plant", "LocationID", "dbo.Location");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Plant", new[] { "LocID" });
+            DropIndex("dbo.Plant", new[] { "LocationID" });
             DropIndex("dbo.LogEntry", new[] { "PlantID" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");

@@ -59,7 +59,52 @@ namespace GrowLogWebMVC.Controllers
             return View(model);
         }
 
+        // GET
+        public ActionResult Edit(int id)
+        {
+            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
 
+            var service = CreatePlantService();
+            var detail = service.GetPlantById(id);
+            var model =
+                new PlantDetail
+                {
+                    PlantID = detail.PlantID,
+                    Name = detail.Name,
+                    Description = detail.Description,
+                    HarvestSeasonStart = detail.HarvestSeasonStart,
+                    HarvestSeasonEnd = detail.HarvestSeasonEnd,
+                    PlantingSeasonStart = detail.PlantingSeasonStart,
+                    PlantingSeasonEnd = detail.PlantingSeasonEnd,
+                    TypeOfPlantCategory = detail.TypeOfPlantCategory,
+                    LocationID = detail.LocationID
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, PlantDetail model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.PlantID != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreatePlantService();
+
+            if (service.UpdatePlant(model))
+            {
+                TempData["SaveResult"] = "Your Plant was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Plant could not be updtaed.");
+            return View(model);
+        }
 
 
 

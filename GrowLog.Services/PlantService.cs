@@ -52,7 +52,7 @@ namespace GrowLog.Services
                         e =>
                             new PlantListItem
                             {
-                                ID = e.ID,
+                                PlantID = e.PlantID,
                                 Name = e.Name,
                                 TypeOfPlantCategory = e.TypeOfPlantCategory
                             }
@@ -68,11 +68,12 @@ namespace GrowLog.Services
                 var entity =
                     ctx
                         .Plants
-                        .Single(e => e.ID == id && e.OwnerId == _userId);
+                        .Single(e => e.PlantID == id && e.OwnerId == _userId);
                 return
                     new PlantDetail
                     {
-                        ID = entity.ID,
+                        OwnerId = _userId,
+                        PlantID = entity.PlantID,
                         Name = entity.Name,
                         Description = entity.Description,
                         HarvestSeasonStart = entity.HarvestSeasonStart,
@@ -85,7 +86,28 @@ namespace GrowLog.Services
             }
         }
 
+        public bool UpdatePlant(PlantDetail model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Plants
+                        .Single(e => e.PlantID == model.PlantID && e.OwnerId == _userId);
 
+                entity.OwnerId = _userId;
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.HarvestSeasonStart = model.HarvestSeasonStart;
+                entity.HarvestSeasonEnd = model.HarvestSeasonEnd;
+                entity.PlantingSeasonStart = model.PlantingSeasonStart;
+                entity.PlantingSeasonEnd = model.PlantingSeasonEnd;
+                entity.TypeOfPlantCategory = model.TypeOfPlantCategory;
+                entity.LocationID = model.LocationID;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
 

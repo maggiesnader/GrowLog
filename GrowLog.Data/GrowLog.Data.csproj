@@ -58,13 +58,17 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LogEntry.cs" />
-    <Compile Include="Migrations\202202040147476_First.cs" />
-    <Compile Include="Migrations\202202040147476_First.Designer.cs">
-      <DependentUpon>202202040147476_First.cs</DependentUpon>
+    <Compile Include="Migrations\202202041740014_InitialCreate.cs" />
+    <Compile Include="Migrations\202202041740014_InitialCreate.Designer.cs">
+      <DependentUpon>202202041740014_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202040157420_Secod.cs" />
-    <Compile Include="Migrations\202202040157420_Secod.Designer.cs">
-      <DependentUpon>202202040157420_Secod.cs</DependentUpon>
+    <Compile Include="Migrations\202202041752527_First.cs" />
+    <Compile Include="Migrations\202202041752527_First.Designer.cs">
+      <DependentUpon>202202041752527_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202041809598_Second.cs" />
+    <Compile Include="Migrations\202202041809598_Second.Designer.cs">
+      <DependentUpon>202202041809598_Second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Plant.cs" />
@@ -124,11 +128,14 @@
     <Content Include="Scripts\jquery-ui-1.13.0.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202040147476_First.resx">
-      <DependentUpon>202202040147476_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202041740014_InitialCreate.resx">
+      <DependentUpon>202202041740014_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202040157420_Secod.resx">
-      <DependentUpon>202202040157420_Secod.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202041752527_First.resx">
+      <DependentUpon>202202041752527_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202041809598_Second.resx">
+      <DependentUpon>202202041809598_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

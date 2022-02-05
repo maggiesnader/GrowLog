@@ -11,7 +11,7 @@ namespace GrowLog.Data
     public class Plant
     {
         [Key]
-        public int ID { get; set; }
+        public int PlantID { get; set; }
 
         [Required]
         public Guid OwnerId { get; set; }
