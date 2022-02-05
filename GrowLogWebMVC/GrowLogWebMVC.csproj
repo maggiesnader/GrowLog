@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\LogEntryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlantController.cs" />
     <Compile Include="Global.asax.cs">
@@ -289,6 +290,11 @@
     <Content Include="Views\Plant\Edit.cshtml" />
     <Content Include="Views\Plant\Details.cshtml" />
     <Content Include="Views\Plant\Delete.cshtml" />
+    <Content Include="Views\LogEntry\Index.cshtml" />
+    <Content Include="Views\LogEntry\Create.cshtml" />
+    <Content Include="Views\LogEntry\Details.cshtml" />
+    <Content Include="Views\LogEntry\Edit.cshtml" />
+    <Content Include="Views\LogEntry\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

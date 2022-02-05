@@ -15,8 +15,8 @@ namespace GrowLog.Services
 
         public PlantService(Guid userId)
         {
-            _userId = userId
-;        }
+            _userId = userId;
+;       }
 
         public bool CreatePlant(PlantCreate model)
         {

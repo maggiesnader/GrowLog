@@ -57,6 +57,9 @@
     <Compile Include="LocationCreate.cs" />
     <Compile Include="LocationListItem.cs" />
     <Compile Include="LocationDetail.cs" />
+    <Compile Include="LogEntryCreate.cs" />
+    <Compile Include="LogEntryDetail.cs" />
+    <Compile Include="LogEntryListItem.cs" />
     <Compile Include="PlantCreate.cs" />
     <Compile Include="PlantDetail.cs" />
     <Compile Include="PlantListItem.cs" />

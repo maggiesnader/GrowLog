@@ -11,98 +11,95 @@ using System.Web.Mvc;
 namespace GrowLogWebMVC.Controllers
 {
     [Authorize]
-    public class PlantController : Controller
+    public class LogEntryController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-        // GET: Plant
+        // GET: LogEntry
         public ActionResult Index()
         {
-            var service = CreatePlantService();
-            var model = service.GetPlants();
+            var service = CreateLogEntryService();
+            var model = service.GetLogEntries();
             return View(model);
         }
 
-        // GET
+        //GET
         public ActionResult Create()
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "Name");
             return View();
         }
 
-        // POST 
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PlantCreate model)
+        public ActionResult Create(LogEntryCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreatePlantService();
+            var service = CreateLogEntryService();
 
-            if (service.CreatePlant(model))
+            if (service.CreateLogEntry(model))
             {
-                TempData["SaveResult"] = "Your plant was created.";
+                TempData["SaveResult"] = "Your Log Entry was created.";
                 return RedirectToAction("Index");
             };
 
             ModelState.AddModelError("", "Plant could not be created.");
 
-            return View(model);
+            return View("model");
         }
 
-        // GET
+        //GET
         public ActionResult Details(int id)
         {
-            var svc = CreatePlantService();
-            var model = svc.GetPlantById(id);
+
+            var svc = CreateLogEntryService();
+            var model = svc.GetLogEntriesById(id);
 
             return View(model);
         }
 
-        // GET
+        //GET
         public ActionResult Edit(int id)
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "Name");
 
-            var service = CreatePlantService();
-            var detail = service.GetPlantById(id);
+            var service = CreateLogEntryService();
+            var detail = service.GetLogEntriesById(id);
             var model =
-                new PlantDetail
+                new LogEntryDetail
                 {
-                    PlantID = detail.PlantID,
+                    LogEntryID = detail.LogEntryID,
                     Name = detail.Name,
                     Description = detail.Description,
-                    HarvestSeasonStart = detail.HarvestSeasonStart,
-                    HarvestSeasonEnd = detail.HarvestSeasonEnd,
-                    PlantingSeasonStart = detail.PlantingSeasonStart,
-                    PlantingSeasonEnd = detail.PlantingSeasonEnd,
-                    TypeOfPlantCategory = detail.TypeOfPlantCategory,
-                    LocationID = detail.LocationID
+                    DateCreated = detail.DateCreated,
+                    PlantID = detail.PlantID
                 };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, PlantDetail model)
+        public ActionResult Edit(int id, LogEntryDetail model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.PlantID != id)
+            if (model.LogEntryID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
 
-            var service = CreatePlantService();
+            var service = CreateLogEntryService();
 
-            if (service.UpdatePlant(model))
+            if (service.UpdateLogEntry(model))
             {
-                TempData["SaveResult"] = "Your Plant was updated.";
+                TempData["SaveResult"] = "Your Log Entry was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your Plant could not be updtaed.");
+            ModelState.AddModelError("", "Your Log Entry could not be updated.");
             return View(model);
         }
 
@@ -110,8 +107,8 @@ namespace GrowLogWebMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreatePlantService();
-            var model = svc.GetPlantById(id);
+            var svc = CreateLogEntryService();
+            var model = svc.GetLogEntriesById(id);
 
             return View(model);
         }
@@ -121,11 +118,11 @@ namespace GrowLogWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
-            var service = CreatePlantService();
+            var service = CreateLogEntryService();
 
-            service.DeletePlant(id);
+            service.DeleteLogEntry(id);
 
-            TempData["SaveResult"] = "Your Plant was deleted.";
+            TempData["SaveResult"] = "Your Log Entry was deleted.";
 
             return RedirectToAction("Index");
         }
@@ -133,11 +130,15 @@ namespace GrowLogWebMVC.Controllers
 
 
 
-        private PlantService CreatePlantService()
+
+
+
+        private LogEntryService CreateLogEntryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlantService(userId);
+            var service = new LogEntryService(userId);
             return service;
         }
+
     }
 }
