@@ -1,0 +1,82 @@
+﻿@model GrowLog.Models.PlantDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlantDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HarvestSeasonStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HarvestSeasonStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HarvestSeasonEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HarvestSeasonEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantingSeasonStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantingSeasonStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantingSeasonEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantingSeasonEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlantID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
