@@ -39,8 +39,9 @@ namespace GrowLog.Data.Migrations
                     {
                         PlantID = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
-                        Name = c.String(nullable: false),
+                        PlantName = c.String(nullable: false),
                         Description = c.String(nullable: false),
+                        Photo = c.String(),
                         HarvestSeasonStart = c.DateTime(),
                         HarvestSeasonEnd = c.DateTime(),
                         PlantingSeasonStart = c.DateTime(),

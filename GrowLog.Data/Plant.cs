@@ -17,10 +17,21 @@ namespace GrowLog.Data
         public Guid OwnerId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string PlantName { get; set; }
 
         [Required]
         public string Description { get; set; }
+
+
+
+
+        public string FileName { get; set; }
+
+        public byte[] FileContent { get; set; }
+
+
+
+
         
         [Display(Name = "Start of Harvest Season")]
         [DataType(DataType.Date)]
@@ -43,8 +54,8 @@ namespace GrowLog.Data
         public PlantCategory TypeOfPlantCategory { get; set; }
 
         [ForeignKey("Location")]
-        [Display(Name = "Location Name")]
         public int LocationID { get; set; }
         public virtual Location Location { get; set; }
+
     }
 }

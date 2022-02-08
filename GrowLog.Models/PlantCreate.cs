@@ -6,15 +6,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GrowLog.Models
 {
     public class PlantCreate
+
     {
-        [Required]
-        public string Name { get; set; }
+        public int PlantID { get; set; }
+       
+        public string PlantName { get; set; }
 
         public string Description { get; set; }
+
 
         [Display(Name = "Start of Harvest Season")]
         [DataType(DataType.Date)]
@@ -36,7 +40,11 @@ namespace GrowLog.Models
         [Display(Name = "Type Of Plant")]
         public PlantCategory TypeOfPlantCategory { get; set; }
 
-        [Display(Name = "Location Name")]
         public int LocationID { get; set; }
+        public virtual Location Location { get; set; }
+
+
+        public HttpPostedFileBase File { get; set; }
+
     }
 }

@@ -1,9 +1,11 @@
-﻿using GrowLog.Models;
+﻿using GrowLog.Data;
+using GrowLog.Models;
 using GrowLog.Services;
 using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,7 +28,7 @@ namespace GrowLogWebMVC.Controllers
         // GET
         public ActionResult Create()
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.LocationId = new SelectList(_db.Locations, "LocationID", "Name");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace GrowLogWebMVC.Controllers
 
             ModelState.AddModelError("", "Plant could not be created.");
 
-            return View(model);
+            return View("model");
         }
 
         // GET
@@ -62,7 +64,7 @@ namespace GrowLogWebMVC.Controllers
         // GET
         public ActionResult Edit(int id)
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.LocationId = new SelectList(_db.Locations, "LocationID", "Name");
 
             var service = CreatePlantService();
             var detail = service.GetPlantById(id);
@@ -70,7 +72,7 @@ namespace GrowLogWebMVC.Controllers
                 new PlantDetail
                 {
                     PlantID = detail.PlantID,
-                    Name = detail.Name,
+                    PlantName = detail.PlantName,
                     Description = detail.Description,
                     HarvestSeasonStart = detail.HarvestSeasonStart,
                     HarvestSeasonEnd = detail.HarvestSeasonEnd,

@@ -5,20 +5,30 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GrowLog.Models
 {
     public class PlantListItem
     {
-        [Key]
+       
         public int PlantID { get; set; }
+        
+        public string PlantName { get; set; }
 
-        public string Name { get; set; }
 
         [Display(Name = "Type Of Plant")]
         public PlantCategory TypeOfPlantCategory { get; set; }
 
-        [Display(Name = "Location Name")]
+        
         public int LocationID { get; set; }
+        public virtual Location Location { get; set;  }
+
+        [Display(Name = "Location Name")]
+        public string LocationName { get; set; }
+
+
+        public HttpPostedFileBase File { get; set; }
+
     }
 }

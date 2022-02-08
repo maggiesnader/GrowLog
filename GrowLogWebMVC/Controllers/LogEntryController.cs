@@ -18,6 +18,7 @@ namespace GrowLogWebMVC.Controllers
         // GET: LogEntry
         public ActionResult Index()
         {
+
             var service = CreateLogEntryService();
             var model = service.GetLogEntries();
             return View(model);
@@ -26,7 +27,7 @@ namespace GrowLogWebMVC.Controllers
         //GET
         public ActionResult Create()
         {
-            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "Name");
+            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "PlantName");
             return View();
         }
 
@@ -53,7 +54,6 @@ namespace GrowLogWebMVC.Controllers
         //GET
         public ActionResult Details(int id)
         {
-
             var svc = CreateLogEntryService();
             var model = svc.GetLogEntriesById(id);
 
@@ -63,7 +63,7 @@ namespace GrowLogWebMVC.Controllers
         //GET
         public ActionResult Edit(int id)
         {
-            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "Name");
+            ViewBag.PlantId = new SelectList(_db.Plants, "PlantId", "PlantName");
 
             var service = CreateLogEntryService();
             var detail = service.GetLogEntriesById(id);

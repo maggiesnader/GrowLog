@@ -51,7 +51,8 @@ namespace GrowLog.Services
                             LogEntryID = e.LogEntryID,
                             Name = e.Name,
                             DateCreated = e.DateCreated,
-                            PlantID = e.PlantID
+                            PlantID = e.PlantID,
+                            PlantName = e.Plant.PlantName
                         });
                 return query.ToArray();
             }
@@ -72,7 +73,8 @@ namespace GrowLog.Services
                         Name = entity.Name,
                         Description = entity.Description,
                         DateCreated = entity.DateCreated,
-                        PlantID = entity.PlantID
+                        PlantID = entity.PlantID,
+                        PlantName = entity.Plant.PlantName
                     };
             }
         }

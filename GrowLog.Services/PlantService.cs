@@ -3,6 +3,7 @@ using GrowLog.Models;
 using GrowLogWebMVC.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,18 +21,28 @@ namespace GrowLog.Services
 
         public bool CreatePlant(PlantCreate model)
         {
+            byte[] bytes = null;
+            if(model.File != null)
+            {
+                Stream image = model.File.InputStream;
+                BinaryReader br = new BinaryReader(image);
+                bytes = br.ReadBytes((Int32)image.Length);
+            }
+
+
             var entity =
                 new Plant()
                 {
                     OwnerId = _userId,
-                    Name = model.Name,
+                    PlantName = model.PlantName,
                     Description = model.Description,
                     HarvestSeasonStart = model.HarvestSeasonStart,
                     HarvestSeasonEnd = model.HarvestSeasonEnd,
                     PlantingSeasonStart = model.PlantingSeasonStart,
                     PlantingSeasonEnd = model.PlantingSeasonEnd,
                     TypeOfPlantCategory = model.TypeOfPlantCategory,
-                    LocationID = model.LocationID
+                    LocationID = model.LocationID,
+                    FileContent = bytes
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -42,6 +53,7 @@ namespace GrowLog.Services
 
         public IEnumerable<PlantListItem> GetPlants()
         {
+
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
@@ -53,8 +65,9 @@ namespace GrowLog.Services
                             new PlantListItem
                             {
                                 PlantID = e.PlantID,
-                                Name = e.Name,
-                                TypeOfPlantCategory = e.TypeOfPlantCategory
+                                PlantName = e.PlantName,
+                                TypeOfPlantCategory = e.TypeOfPlantCategory,
+                                LocationName = e.Location.Name
                             }
                             );
                 return query.ToArray();
@@ -74,14 +87,14 @@ namespace GrowLog.Services
                     {
                         OwnerId = _userId,
                         PlantID = entity.PlantID,
-                        Name = entity.Name,
+                        PlantName = entity.PlantName,
                         Description = entity.Description,
                         HarvestSeasonStart = entity.HarvestSeasonStart,
                         HarvestSeasonEnd = entity.HarvestSeasonEnd,
                         PlantingSeasonStart = entity.PlantingSeasonStart,
                         PlantingSeasonEnd = entity.PlantingSeasonEnd,
                         TypeOfPlantCategory = entity.TypeOfPlantCategory,
-                        LocationID = entity.LocationID
+                        LocationName = entity.Location.Name
                     };
             }
         }
@@ -96,7 +109,7 @@ namespace GrowLog.Services
                         .Single(e => e.PlantID == model.PlantID && e.OwnerId == _userId);
 
                 entity.OwnerId = _userId;
-                entity.Name = model.Name;
+                entity.PlantName = model.PlantName;
                 entity.Description = model.Description;
                 entity.HarvestSeasonStart = model.HarvestSeasonStart;
                 entity.HarvestSeasonEnd = model.HarvestSeasonEnd;

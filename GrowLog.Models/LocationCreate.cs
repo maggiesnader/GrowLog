@@ -9,7 +9,6 @@ namespace GrowLog.Models
 {
     public class LocationCreate
     {
-        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }

@@ -30,5 +30,7 @@ namespace GrowLog.Data
         [ForeignKey("Plant")]
         public int PlantID { get; set; }
         public virtual Plant Plant { get; set; }
+
+
     }
 }

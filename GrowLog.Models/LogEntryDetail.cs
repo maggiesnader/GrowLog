@@ -11,7 +11,7 @@ namespace GrowLog.Models
 {
     public class LogEntryDetail
     {
-        [Key]
+        
         public int LogEntryID { get; set; }
 
         public Guid OwnerId { get; set; }
@@ -20,13 +20,16 @@ namespace GrowLog.Models
 
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
 
-        [ForeignKey("Plant")]
+        
         public int PlantID { get; set; }
         public virtual Plant Plant { get; set; }
+
+        [Display(Name = "Plant Name")]
+        public string PlantName { get; set; }
+
     }
 }

@@ -285,16 +285,14 @@
     <Content Include="Views\Location\Details.cshtml" />
     <Content Include="Views\Location\Edit.cshtml" />
     <Content Include="Views\Location\Delete.cshtml" />
-    <Content Include="Views\Plant\Index.cshtml" />
-    <Content Include="Views\Plant\Create.cshtml" />
-    <Content Include="Views\Plant\Edit.cshtml" />
-    <Content Include="Views\Plant\Details.cshtml" />
-    <Content Include="Views\Plant\Delete.cshtml" />
     <Content Include="Views\LogEntry\Index.cshtml" />
     <Content Include="Views\LogEntry\Create.cshtml" />
     <Content Include="Views\LogEntry\Details.cshtml" />
     <Content Include="Views\LogEntry\Edit.cshtml" />
     <Content Include="Views\LogEntry\Delete.cshtml" />
+    <Content Include="Views\Plant\Index.cshtml" />
+    <Content Include="Views\Plant\Details.cshtml" />
+    <Content Include="Views\Plant\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

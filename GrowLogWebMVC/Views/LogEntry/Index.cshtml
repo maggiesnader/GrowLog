@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.DateCreated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlantID)
+            @Html.DisplayNameFor(model => model.PlantName)
         </th>
         <th></th>
     </tr>
@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PlantID)
+            @Html.DisplayFor(modelItem => item.PlantName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.LogEntryID }) |

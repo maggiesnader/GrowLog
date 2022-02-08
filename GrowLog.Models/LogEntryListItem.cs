@@ -26,5 +26,8 @@ namespace GrowLog.Models
         [Display(Name = "Plant Name")]
         public int PlantID { get; set; }
         public virtual Plant Plant { get; set; }
+
+        [Display(Name = "Plant Name")]
+        public string PlantName { get; set; }
     }
 }
