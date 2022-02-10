@@ -17,7 +17,7 @@ namespace GrowLog.Services
         public PlantService(Guid userId)
         {
             _userId = userId;
-;       }
+       }
 
         public bool CreatePlant(PlantCreate model)
         {
@@ -42,12 +42,13 @@ namespace GrowLog.Services
                     PlantingSeasonEnd = model.PlantingSeasonEnd,
                     TypeOfPlantCategory = model.TypeOfPlantCategory,
                     LocationID = model.LocationID,
-                    FileContent = bytes
+                    FileContent = bytes,
+                    File = model.File,
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Plants.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() >= 1;
             }
         }
 
@@ -67,6 +68,7 @@ namespace GrowLog.Services
                                 PlantID = e.PlantID,
                                 PlantName = e.PlantName,
                                 TypeOfPlantCategory = e.TypeOfPlantCategory,
+                                LocationID = e.LocationID,
                                 LocationName = e.Location.Name
                             }
                             );
@@ -94,14 +96,25 @@ namespace GrowLog.Services
                         PlantingSeasonStart = entity.PlantingSeasonStart,
                         PlantingSeasonEnd = entity.PlantingSeasonEnd,
                         TypeOfPlantCategory = entity.TypeOfPlantCategory,
-                        LocationName = entity.Location.Name
+                        LocationID = entity.LocationID,
+                        LocationName = entity.Location.Name,
+                        FileContent = entity.FileContent,
+                        File = entity.File,
                     };
             }
         }
 
         public bool UpdatePlant(PlantDetail model)
         {
-            using(var ctx = new ApplicationDbContext())
+            byte[] bytes = model.FileContent;
+            if (model.File != null)
+            { 
+                Stream image = model.File.InputStream;
+                BinaryReader br = new BinaryReader(image);
+                bytes = br.ReadBytes((Int32)image.Length);
+            }
+
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -117,8 +130,10 @@ namespace GrowLog.Services
                 entity.PlantingSeasonEnd = model.PlantingSeasonEnd;
                 entity.TypeOfPlantCategory = model.TypeOfPlantCategory;
                 entity.LocationID = model.LocationID;
+                entity.FileContent = model.FileContent;
+                entity.File = model.File;
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() >= 1;
             }
         }
 

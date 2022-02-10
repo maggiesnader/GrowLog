@@ -28,7 +28,7 @@ namespace GrowLog.Models
         public int PlantID { get; set; }
         public virtual Plant Plant { get; set; }
 
-        [Display(Name = "Plant Name")]
+        [Display(Name = "Plant")]
         public string PlantName { get; set; }
 
     }

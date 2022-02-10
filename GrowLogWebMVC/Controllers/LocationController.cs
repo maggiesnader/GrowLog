@@ -1,5 +1,6 @@
 ﻿using GrowLog.Models;
 using GrowLog.Services;
+using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace GrowLogWebMVC.Controllers
     [Authorize]
     public class LocationController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+        
         // GET: Location
         public ActionResult Index()
         {

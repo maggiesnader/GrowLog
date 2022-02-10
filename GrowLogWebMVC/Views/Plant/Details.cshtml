@@ -10,7 +10,10 @@
     <h4>PlantDetail</h4>
     <hr />
     <dl class="dl-horizontal">
-        
+
+        @Html.HiddenFor(model => model.PlantID)
+        @Html.HiddenFor(model => model.LocationID)
+
         <dt>
             @Html.DisplayNameFor(model => model.PlantName)
         </dt>
@@ -67,9 +70,30 @@
             @Html.DisplayFor(model => model.LocationName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.FileContent)
+        </dt>
+
+        <dd>
+            @if (Model.FileContent != null)
+            {
+                var base64 = Convert.ToBase64String(Model.FileContent); var imgSrc = String.Format("data:image/gif;base64,{0}", base64);<img src=@imgSrc , class="Postimg" , alt="sneaker image" /> }
+            else
+            {
+                <img src="" class="img-fluid" alt="plant image" />}
+
+        </dd>
+
+
+
+
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.PlantID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<style>
+    .img-fluid{height: 50vh; width:50vw;}
+</style>

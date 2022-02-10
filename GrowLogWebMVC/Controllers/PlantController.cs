@@ -28,7 +28,7 @@ namespace GrowLogWebMVC.Controllers
         // GET
         public ActionResult Create()
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationID", "Name");
+            ViewBag.LocationID = new SelectList(_db.Locations, "LocationID", "Name");
             return View();
         }
 
@@ -64,7 +64,8 @@ namespace GrowLogWebMVC.Controllers
         // GET
         public ActionResult Edit(int id)
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationID", "Name");
+            ViewBag.LocationID = new SelectList(_db.Locations, "LocationID", "Name");
+            
 
             var service = CreatePlantService();
             var detail = service.GetPlantById(id);
@@ -79,7 +80,8 @@ namespace GrowLogWebMVC.Controllers
                     PlantingSeasonStart = detail.PlantingSeasonStart,
                     PlantingSeasonEnd = detail.PlantingSeasonEnd,
                     TypeOfPlantCategory = detail.TypeOfPlantCategory,
-                    LocationID = detail.LocationID
+                    LocationID = detail.LocationID,
+                    File = detail.File,
                 };
             return View(model);
         }

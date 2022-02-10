@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ namespace GrowLog.Models
         public int PlantID { get; set; }
 
         public Guid OwnerId { get; set; }
-        
+
+        [Display(Name = "Name")]
         public string PlantName { get; set; }
 
         public string Description { get; set; }
@@ -43,10 +45,14 @@ namespace GrowLog.Models
         public int LocationID { get; set; }
         public virtual Location Location { get; set; }
 
-        [Display(Name = "Location Name")]
+        [Display(Name = "Location")]
         public string LocationName { get; set; }
 
 
+        [Display(Name = "Image")]
+        public byte[] FileContent { get; set; }
+
+        [NotMapped]
         public HttpPostedFileBase File { get; set; }
 
     }

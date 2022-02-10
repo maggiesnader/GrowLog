@@ -10,7 +10,7 @@ using System.Web;
 
 namespace GrowLog.Models
 {
-    public class PlantCreate
+    public class PlantCreate 
 
     {
         public int PlantID { get; set; }
@@ -18,6 +18,14 @@ namespace GrowLog.Models
         public string PlantName { get; set; }
 
         public string Description { get; set; }
+
+
+
+        public byte[] FileContent { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
+
+
 
 
         [Display(Name = "Start of Harvest Season")]
@@ -44,7 +52,6 @@ namespace GrowLog.Models
         public virtual Location Location { get; set; }
 
 
-        public HttpPostedFileBase File { get; set; }
-
+        
     }
 }

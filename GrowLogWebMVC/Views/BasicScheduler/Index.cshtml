@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Scripts/dhtmlxScheduler/dhtmlxscheduler.css" rel="stylesheet" />
+    <title>Calendar</title>
+    <style>
+
+        body {
+            background-color: #eee;
+        }
+    </style>
+</head>    
+    <body>
+        <div class="scheduler_container"style="height:700px;width:900px;margin:0 auto">
+            @Html.Raw(Model.Render())
+        </div>
+    </body>
+
+</html>
+
