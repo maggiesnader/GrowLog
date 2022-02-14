@@ -1,0 +1,68 @@
+﻿@model GrowLog.Models.PlantDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PlantDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.OwnerId)
+        @Html.HiddenFor(model => model.PlantID)
+        @Html.HiddenFor(model => model.LocationID)
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantingSeasonStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantingSeasonStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantingSeasonEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantingSeasonEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

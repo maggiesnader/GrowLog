@@ -16,11 +16,11 @@ namespace GrowLogWebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: LogEntry
-        public ActionResult Index()
+        public ActionResult Index(int? plantID)
         {
 
             var service = CreateLogEntryService();
-            var model = service.GetLogEntries();
+            var model = service.GetLogEntries().Where( le => le.PlantID == plantID || plantID == null);
             return View(model);
         }
 

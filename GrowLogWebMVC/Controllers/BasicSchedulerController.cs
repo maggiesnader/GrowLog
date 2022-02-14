@@ -14,16 +14,17 @@ namespace GrowLogWebMVC.Controllers
     public class BasicSchedulerController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
+        
         // GET: BasicScheduler
         public ActionResult Index()
         {
             var sched = new DHXScheduler(this);
             sched.Skin = DHXScheduler.Skins.Terrace;
 
-            sched.Config.first_hour = 6;
-            sched.Config.last_hour = 20;
+            //sched.Config.first_hour = 6;
+            //sched.Config.last_hour = 20;
 
-            sched.EnableDynamicLoading(SchedulerDataLoader.DynamicalLoadingMode.Month);
+            //sched.EnableDynamicLoading(SchedulerDataLoader.DynamicalLoadingMode.Month);
 
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
@@ -32,9 +33,9 @@ namespace GrowLogWebMVC.Controllers
             return View(sched);
         }
 
-        public ContentResult Data(DateTime from, DateTime to)
+        public ContentResult Data()//DateTime from, DateTime to
         {
-            var plants = context.Plants.Where(e => e.PlantingSeasonEnd >= from).ToList();
+            var plants = context.Plants.ToArray();
             return new SchedulerAjaxData(plants);
 
 
@@ -56,7 +57,7 @@ namespace GrowLogWebMVC.Controllers
 
             //return (new SchedulerAjaxData(
             //new ApplicationDbContext().Plants
-            //.Select(p => new { p.PlantID, p.PlantName, p.PlantingSeasonStart, p.PlantingSeasonEnd })
+            //.Select(p => new { p.PlantID, p.PlantName, p.PlantingSeasonStart, p.PlantingSeasonEnd }).ToArray()
             //)
             //);
         }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<GrowLog.Models.LocationListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Locations";
 }
 
-<h2>Index</h2>
+<h2>Garden Bed Locations</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -33,7 +33,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.ActionLink(item.Name, "Index", "Plant", new { locationId = item.LocationID}, null)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |

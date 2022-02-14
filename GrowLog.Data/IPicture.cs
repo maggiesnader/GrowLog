@@ -11,10 +11,10 @@ namespace GrowLog.Data
 {
     public interface IPicture
     {
-        [Required]
-        byte[] FileContent { get; set; }
-        [NotMapped]
-        HttpPostedFileBase File { get; set; }
+        //[Required]
+        //byte[] FileContent { get; set; }
+        //[NotMapped]
+        //HttpPostedFileBase File { get; set; }
         
     }
 }

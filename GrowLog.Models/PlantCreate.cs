@@ -19,24 +19,6 @@ namespace GrowLog.Models
 
         public string Description { get; set; }
 
-
-
-        public byte[] FileContent { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase File { get; set; }
-
-
-
-
-        [Display(Name = "Start of Harvest Season")]
-        [DataType(DataType.Date)]
-        public DateTime? HarvestSeasonStart { get; set; }
-
-        [Display(Name = "End of Harvest Season")]
-        [DataType(DataType.Date)]
-        public DateTime? HarvestSeasonEnd { get; set; }
-
-
         [Display(Name = "Start of Planting Season")]
         [DataType(DataType.Date)]
         public DateTime? PlantingSeasonStart { get; set; }
@@ -52,6 +34,25 @@ namespace GrowLog.Models
         public virtual Location Location { get; set; }
 
 
-        
+
+
+
+
+
+
+        //[Display(Name = "Start of Harvest Season")]
+        //[DataType(DataType.Date)]
+        //public DateTime? HarvestSeasonStart { get; set; }
+
+        //[Display(Name = "End of Harvest Season")]
+        //[DataType(DataType.Date)]
+        //public DateTime? HarvestSeasonEnd { get; set; }
+
+
+        //public byte[] FileContent { get; set; }
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
+
+
     }
 }

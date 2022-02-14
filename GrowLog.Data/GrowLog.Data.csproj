@@ -84,6 +84,22 @@
     <Compile Include="Migrations\202202101759202_Fourt.Designer.cs">
       <DependentUpon>202202101759202_Fourt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202102309422_Fifth.cs" />
+    <Compile Include="Migrations\202202102309422_Fifth.Designer.cs">
+      <DependentUpon>202202102309422_Fifth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202110201345_Sixth.cs" />
+    <Compile Include="Migrations\202202110201345_Sixth.Designer.cs">
+      <DependentUpon>202202110201345_Sixth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202132350434_seventh.cs" />
+    <Compile Include="Migrations\202202132350434_seventh.Designer.cs">
+      <DependentUpon>202202132350434_seventh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202132356255_eighth.cs" />
+    <Compile Include="Migrations\202202132356255_eighth.Designer.cs">
+      <DependentUpon>202202132356255_eighth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Plant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -368,6 +384,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202101759202_Fourt.resx">
       <DependentUpon>202202101759202_Fourt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202102309422_Fifth.resx">
+      <DependentUpon>202202102309422_Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202110201345_Sixth.resx">
+      <DependentUpon>202202110201345_Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202132350434_seventh.resx">
+      <DependentUpon>202202132350434_seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202132356255_eighth.resx">
+      <DependentUpon>202202132356255_eighth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

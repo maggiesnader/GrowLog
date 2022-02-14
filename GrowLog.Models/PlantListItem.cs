@@ -27,11 +27,15 @@ namespace GrowLog.Models
         [Display(Name = "Location")]
         public string LocationName { get; set; }
 
+        [Display(Name = "Start of Planting Season")]
+        [DataType(DataType.Date)]
+        public DateTime? PlantingSeasonStart { get; set; }
 
-        public byte[] FileContent { get; set; }
 
-        [NotMapped]
-        public HttpPostedFileBase File { get; set; }
+        //public byte[] FileContent { get; set; }
+
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
 
     }
 }

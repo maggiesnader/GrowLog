@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<GrowLog.Models.LogEntryListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Log Entries";
 }
 
-<h2>Index</h2>
+<h2>Log Entries</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Plant List", "Index", "Plant") |
+    @Html.ActionLink("Location List", "Index", "Location")
 </p>
 <table class="table">
     <tr>
@@ -26,7 +28,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", "LogEntry", new { id = item.LogEntryID}, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)
@@ -35,9 +37,10 @@
             @Html.DisplayFor(modelItem => item.PlantName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LogEntryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LogEntryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LogEntryID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.LogEntryID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.LogEntryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.LogEntryID }) |
+            @Html.ActionLink("Back to Plant List", "Index", "Plant")
         </td>
     </tr>
 }

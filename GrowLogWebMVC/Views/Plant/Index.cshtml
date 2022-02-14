@@ -1,39 +1,64 @@
-﻿@model IEnumerable<GrowLog.Models.PlantListItem>
+﻿@using GrowLog.Models;
+@model IEnumerable<PlantListItem>
+
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Plant List"; 
 }
 
-<h2>Index</h2>
+<h2>Plant List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Location List", "Index", "Location")
+
 </p>
+
+
+<p>
+    @using (Html.BeginForm("Index", "Plant", FormMethod.Get))
+    {
+        <b>Search By:</b> @Html.RadioButton("searchBy", "PlantName") <text>Name</text>
+        @Html.RadioButton("searchBy", "LocationName", true) <text>Location</text> <br />
+        @Html.TextBox("search") <input type="submit" value="Search" />
+        @Html.ActionLink("Refresh", "Index", "Plant")
+    }
+</p>
+
+
+
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PlantName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationName)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlantName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlantID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlantID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlantID })
-        </td>
-    </tr>
-}
 
-</table>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3"> No Plants match search criteria. </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.PlantName, "Index", "LogEntry", new { plantId = item.PlantID}, null )
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PlantID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PlantID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PlantID })
+                </td>
+            </tr>
+        }
+    }
+    </table>

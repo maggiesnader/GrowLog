@@ -514,6 +514,8 @@
     <Content Include="Views\Plant\Edit.cshtml" />
     <Content Include="Views\BasicScheduler\Index.cshtml" />
     <Content Include="Views\BasicScheduler\Data.cshtml" />
+    <Content Include="Views\Plant\Delete.cshtml" />
+    <Content Include="Views\Shared\_MenuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

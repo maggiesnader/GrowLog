@@ -18,11 +18,21 @@ namespace GrowLogWebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Plant
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search, int? locationID)
         {
+
             var service = CreatePlantService();
-            var model = service.GetPlants();
+            var model = service.GetPlants().Where( p => p.LocationID == locationID || locationID == null);
+            if (searchBy == "PlantName")
+            {
+                return View(model.Where(x => x.PlantName.Contains(search) || search == null).ToList());
+            }
+            else if (searchBy == "LocationName")
+            {
+                return View(model.Where(x => x.LocationName == search || search == null).ToList());
+            }
             return View(model);
+
         }
 
         // GET
@@ -75,13 +85,16 @@ namespace GrowLogWebMVC.Controllers
                     PlantID = detail.PlantID,
                     PlantName = detail.PlantName,
                     Description = detail.Description,
-                    HarvestSeasonStart = detail.HarvestSeasonStart,
-                    HarvestSeasonEnd = detail.HarvestSeasonEnd,
                     PlantingSeasonStart = detail.PlantingSeasonStart,
                     PlantingSeasonEnd = detail.PlantingSeasonEnd,
                     TypeOfPlantCategory = detail.TypeOfPlantCategory,
                     LocationID = detail.LocationID,
-                    File = detail.File,
+
+
+                    //HarvestSeasonStart = detail.HarvestSeasonStart,
+                    //HarvestSeasonEnd = detail.HarvestSeasonEnd,
+                    //FileContent = detail.FileContent,
+                    //File = detail.File,
                 };
             return View(model);
         }

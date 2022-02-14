@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Name) </h2>
 
 <div>
-    <h4>LocationDetail</h4>
+    <h4>Location Details</h4>
     <hr />
     <dl class="dl-horizontal">
         
@@ -30,6 +30,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink($"{Model.Name} Plant List", "Index", "Plant", new { locationId = Model.LocationID }, null) |
+    @Html.ActionLink($"Edit {Model.Name}", "Edit", new { id = Model.LocationID }) |
+    @Html.ActionLink("Location List", "Index")
 </p>

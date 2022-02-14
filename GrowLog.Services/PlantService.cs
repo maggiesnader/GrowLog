@@ -21,13 +21,13 @@ namespace GrowLog.Services
 
         public bool CreatePlant(PlantCreate model)
         {
-            byte[] bytes = null;
-            if(model.File != null)
-            {
-                Stream image = model.File.InputStream;
-                BinaryReader br = new BinaryReader(image);
-                bytes = br.ReadBytes((Int32)image.Length);
-            }
+            //byte[] bytes = null;
+            //if(model.File != null)
+            //{
+                //Stream image = model.File.InputStream;
+                //BinaryReader br = new BinaryReader(image);
+                //bytes = br.ReadBytes((Int32)image.Length);
+            //}
 
 
             var entity =
@@ -36,14 +36,15 @@ namespace GrowLog.Services
                     OwnerId = _userId,
                     PlantName = model.PlantName,
                     Description = model.Description,
-                    HarvestSeasonStart = model.HarvestSeasonStart,
-                    HarvestSeasonEnd = model.HarvestSeasonEnd,
                     PlantingSeasonStart = model.PlantingSeasonStart,
                     PlantingSeasonEnd = model.PlantingSeasonEnd,
                     TypeOfPlantCategory = model.TypeOfPlantCategory,
                     LocationID = model.LocationID,
-                    FileContent = bytes,
-                    File = model.File,
+
+                    //HarvestSeasonStart = model.HarvestSeasonStart,
+                    //HarvestSeasonEnd = model.HarvestSeasonEnd,
+                    //FileContent = bytes,
+                    //File = model.File,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -78,8 +79,10 @@ namespace GrowLog.Services
 
         public PlantDetail GetPlantById(int id)
         {
+            
             using (var ctx = new ApplicationDbContext())
             {
+
                 var entity =
                     ctx
                         .Plants
@@ -91,28 +94,30 @@ namespace GrowLog.Services
                         PlantID = entity.PlantID,
                         PlantName = entity.PlantName,
                         Description = entity.Description,
-                        HarvestSeasonStart = entity.HarvestSeasonStart,
-                        HarvestSeasonEnd = entity.HarvestSeasonEnd,
                         PlantingSeasonStart = entity.PlantingSeasonStart,
                         PlantingSeasonEnd = entity.PlantingSeasonEnd,
                         TypeOfPlantCategory = entity.TypeOfPlantCategory,
                         LocationID = entity.LocationID,
                         LocationName = entity.Location.Name,
-                        FileContent = entity.FileContent,
-                        File = entity.File,
+
+
+                        //HarvestSeasonStart = entity.HarvestSeasonStart,
+                        //HarvestSeasonEnd = entity.HarvestSeasonEnd,
+                        //FileContent = entity.FileContent,
+                        //File = entity.File,
                     };
             }
         }
 
         public bool UpdatePlant(PlantDetail model)
         {
-            byte[] bytes = model.FileContent;
-            if (model.File != null)
-            { 
-                Stream image = model.File.InputStream;
-                BinaryReader br = new BinaryReader(image);
-                bytes = br.ReadBytes((Int32)image.Length);
-            }
+            //byte[] bytes = model.FileContent;
+            //if (model.FileContent != null)
+            //{ 
+             //   Stream image = model.File.InputStream;
+             //   BinaryReader br = new BinaryReader(image);
+            //    bytes = br.ReadBytes((Int32)image.Length);
+            //}
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -124,14 +129,15 @@ namespace GrowLog.Services
                 entity.OwnerId = _userId;
                 entity.PlantName = model.PlantName;
                 entity.Description = model.Description;
-                entity.HarvestSeasonStart = model.HarvestSeasonStart;
-                entity.HarvestSeasonEnd = model.HarvestSeasonEnd;
                 entity.PlantingSeasonStart = model.PlantingSeasonStart;
                 entity.PlantingSeasonEnd = model.PlantingSeasonEnd;
                 entity.TypeOfPlantCategory = model.TypeOfPlantCategory;
                 entity.LocationID = model.LocationID;
-                entity.FileContent = model.FileContent;
-                entity.File = model.File;
+
+                //entity.HarvestSeasonStart = model.HarvestSeasonStart;
+                //entity.HarvestSeasonEnd = model.HarvestSeasonEnd;
+                //entity.FileContent = bytes;
+                //entity.File = model.File;
 
                 return ctx.SaveChanges() >= 1;
             }
