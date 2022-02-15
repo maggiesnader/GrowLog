@@ -1,4 +1,6 @@
-﻿@model IEnumerable<GrowLog.Models.LocationListItem>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<GrowLog.Models.LocationListItem>
 
 @{
     ViewBag.Title = "Locations";
@@ -13,7 +15,7 @@
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
-        
+
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
         </button>
@@ -24,7 +26,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th></th>
     </tr>
@@ -33,7 +35,7 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "Index", "Plant", new { locationId = item.LocationID}, null)
+                @Html.ActionLink(item.Name, "Index", "Plant", new { locationId = item.LocationID }, null)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
@@ -44,3 +46,8 @@
     }
 
 </table>
+<br />
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+
+

@@ -3,6 +3,8 @@ using GrowLog.Models;
 using GrowLog.Services;
 using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,20 +20,28 @@ namespace GrowLogWebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Plant
-        public ActionResult Index(string searchBy, string search, int? locationID)
+        public ActionResult Index(string searchBy, string search, int? locationID, int? page) //string SortingOrder, string Filter_Value, 
         {
 
             var service = CreatePlantService();
-            var model = service.GetPlants().Where( p => p.LocationID == locationID || locationID == null);
+            var model = service.GetPlants().Where(p => p.LocationID == locationID 
+            || locationID == null).OrderBy(m => m.PlantingSeasonStart);
+            
+
             if (searchBy == "PlantName")
             {
-                return View(model.Where(x => x.PlantName.Contains(search) || search == null).ToList());
+                return View(model.Where(x => x.PlantName.Contains(search) 
+                || search == null).ToList().ToPagedList(page ?? 1, 4));
             }
             else if (searchBy == "LocationName")
             {
-                return View(model.Where(x => x.LocationName == search || search == null).ToList());
+                return View(model.Where(x => x.LocationName == search 
+                || search == null).ToList().ToPagedList(page ?? 1, 4));
             }
-            return View(model);
+
+            int Size_Of_Page = 4;
+            int No_Of_Page = (page ?? 1);
+            return View(model.ToPagedList(No_Of_Page, Size_Of_Page));
 
         }
 
@@ -75,7 +85,7 @@ namespace GrowLogWebMVC.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.LocationID = new SelectList(_db.Locations, "LocationID", "Name");
-            
+
 
             var service = CreatePlantService();
             var detail = service.GetPlantById(id);

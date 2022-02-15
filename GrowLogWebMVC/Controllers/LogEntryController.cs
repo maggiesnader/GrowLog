@@ -2,6 +2,8 @@
 using GrowLog.Services;
 using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +18,16 @@ namespace GrowLogWebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: LogEntry
-        public ActionResult Index(int? plantID)
+        public ActionResult Index(int? plantID, int? page) 
         {
 
             var service = CreateLogEntryService();
-            var model = service.GetLogEntries().Where( le => le.PlantID == plantID || plantID == null);
-            return View(model);
+            var model = service.GetLogEntries().Where(le => le.PlantID == plantID
+           || plantID == null).OrderBy(m => m.DateCreated);
+
+            int Size_Of_Page = 4;
+            int No_Of_Page = (page ?? 1);
+            return View(model.ToPagedList(No_Of_Page, Size_Of_Page));
         }
 
         //GET

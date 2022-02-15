@@ -70,7 +70,8 @@ namespace GrowLog.Services
                                 PlantName = e.PlantName,
                                 TypeOfPlantCategory = e.TypeOfPlantCategory,
                                 LocationID = e.LocationID,
-                                LocationName = e.Location.Name
+                                LocationName = e.Location.Name,
+                                PlantingSeasonStart = e.PlantingSeasonStart,
                             }
                             );
                 return query.ToArray();
