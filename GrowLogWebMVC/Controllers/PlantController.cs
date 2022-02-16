@@ -25,7 +25,7 @@ namespace GrowLogWebMVC.Controllers
 
             var service = CreatePlantService();
             var model = service.GetPlants().Where(p => p.LocationID == locationID 
-            || locationID == null).OrderBy(m => m.PlantingSeasonStart);
+            || locationID == null);
             
 
             if (searchBy == "PlantName")

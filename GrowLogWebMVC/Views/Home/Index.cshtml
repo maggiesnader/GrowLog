@@ -1,32 +1,65 @@
 ﻿@{
-    ViewBag.Title = "GROW";
+    ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>GROW</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <div class="spacer" style="height: 4.5vw"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Start a new Garden</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+
+    <div class="jumbotron" style="background-color: darkolivegreen; color: rgba(255, 255, 255, 0.897); width: 75vw; height: 35vw; margin: auto;">
+        <h1 class="text-center" style=" font-size: 11vw; margin:auto;">SEEDLING</h1>
+        <div class="logoWrapper"style="width: 52vw; max-height: 2vw; margin:auto;" >
+            <div class="spacer" style="height: 1vw"></div>
+            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+            <div class="spacer" style="height: 0.75vw"></div>
+            <p class="lead text-center" style="font-size: 2vw;">a grow log</p>
+            <div class="spacer" style="height: 2vw; margin: -1vw;"></div>
+            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+            <div class="spacer" style="height: 1vw"></div>
+            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+        </div>
+
+    </div>
+    
+    <div class="spacer" style="height: 4vw;"></div>
+
+<div class="row d-flex flex-row" style="color: rgba(255, 255, 255, 0.897);">
+    <div class="feature">
+        <h2 class="head text-center" >@Html.ActionLink("Gardens", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey; font-size: 5vw;" })</h2>
+        <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
+        <div class="spacer" style="height: 15px;"></div>
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height:20vw; align-content: center; margin: auto; padding:3vw; background-color:darkolivegreen; border-radius:7px;">
+            Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
+            Dandelion cucumber earthnut pea peanut soko zucchini.
+            <br /><br />
+            @Html.ActionLink("Create a new Garden", "Create", "Location", null, new { @class = "link ", style = "color: darkslategrey;" }) |
+            @Html.ActionLink("Checkout your Gardens", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey;" })
         </p>
-        <p><a class="btn btn-default" @Html.ActionLink("Go", "Create", "Location")> </a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Check Out Gardens</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Go", "Index", "Location")></a></p>
+    <div class="feature">
+        <h2 class="head text-center">@Html.ActionLink("Plants", "Index", "Plant", null, new { @class = "link", style = "color: darkslategrey; font-size: 5vw;" })</h2>
+        <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
+        <div class="spacer" style="height: 15px;"></div>
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; border-radius: 7px; ">
+            Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.
+            Celery potato scallion desert raisin.
+            <br /><br />
+            @Html.ActionLink("Create a new Plant", "Create", "Plant", null, new { @class = "link ", style = "color: darkslategrey;" }) |
+            @Html.ActionLink("Checkout your Plants", "Index", "Plant", null, new { @class = "link ", style = "color: darkslategrey;" })
+        </p>
+
     </div>
-    <div class="col-md-4">
-        <h2>Check Out Plants</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Go", "Index", "Plant")></a></p>
+    <div class="feature">
+        <h2 class="head text-center">@Html.ActionLink("Log", "Index", "LogEntry", null, new { @class = "link", style = "color: darkslategrey; font-size: 5vw;" })</h2>
+        <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
+        <div class="spacer" style="height: 15px;"></div>
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; border-radius: 7px; ">
+            Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring onion bush tomato
+            kale radicchio turnip chicory salsify pea sprouts.
+            <br /><br />
+            @Html.ActionLink("Create a new Log Entry", "Create", "LogEntry", null, new { @class = "link ", style = "color: darkslategrey;" }) |
+            @Html.ActionLink("Checkout your Log Entries", "Index", "LogEntry", null, new { @class = "link ", style = "color: darkslategrey;" })
+        </p>
+
     </div>
-   
+
 </div>
