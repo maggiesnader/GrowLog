@@ -24,9 +24,8 @@ textarea {
     max-width: 280px;
 }
 
-.indexTitle {
-    font-family: 'teko', sans-serif;
-}
+
+
 .row .feature .head {
     font-family: 'Teko', sans-serif;
 }
@@ -47,6 +46,15 @@ textarea {
     font-family: 'Arbutus', sans-serif;
     text-align: center;
 }
+
+.table .tableLabel{
+    color: darkslategray;
+}
+
+.plantTableData .plantNameLink {
+    font-family: 'Teko', sans-serif
+}
+
 
 
 

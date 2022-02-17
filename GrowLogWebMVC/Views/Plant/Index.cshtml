@@ -9,33 +9,33 @@
     ViewBag.Title = "Plants";
 }
 
-<h2 class="indexTitle">Plants</h2>
+<div class="spacer" style="height: 4.5vw"></div>
+<h2 class="indexTitle" style="color: rgba(255, 255, 255, 0.897); background-color: darkolivegreen; width:50vw; margin:auto;
+     font-family: 'Arbutus', sans-serif; font-size: 6vw; text-align: center; border-radius:7px;">Plants</h2>
+
+
 
 <p>
-    @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("Location List", "Index", "Location")
-
+    <div class="searchBar" style="text-align: end;">
+        @using (Html.BeginForm("Index", "Plant", FormMethod.Get))
+        {
+            @Html.RadioButton("searchBy", "PlantName") <text>Name</text>
+            @Html.RadioButton("searchBy", "LocationName", true) <text>Location</text> <br />
+            <b>Search Plants: </b> @Html.TextBox("search") <input type="submit" value="Search" />
+            @Html.ActionLink("Refresh", "Index", "Plant", null, new { @class = "link ", style = "color: darkslategrey;" })
+        }
+    </div>
+    <br /><br />
+    <div class="linkBar" style="text-align:end; font-size: 1.5vw;">
+        @Html.ActionLink("Create New Plant", "Create", null, new { @class = "link ", style = "color: darkslategrey;" }) ||
+        @Html.ActionLink("Location List", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey;" }) ||
+        @Html.ActionLink("Calendar", "Index", "BasicScheduler", null, new { @style = "color: darkslategrey;" })
+        
+    </div>
 </p>
+<br />
+<table class="table" style="width:40vw; margin:auto;">
 
-<p>
-    @using (Html.BeginForm("Index", "Plant", FormMethod.Get))
-    {
-        <b>Search By:</b> @Html.RadioButton("searchBy", "PlantName") <text>Name</text>
-        @Html.RadioButton("searchBy", "LocationName", true) <text>Location</text> <br />
-        @Html.TextBox("search") <input type="submit" value="Search" />
-        @Html.ActionLink("Refresh", "Index", "Plant")
-    }
-</p>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.First().PlantName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().PlantingSeasonStart)
-        </th>
-    </tr>
 
     @if (Model.Count() == 0)
     {
@@ -47,20 +47,23 @@
     {
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.PlantName, "Index", "LogEntry", new { plantId = item.PlantID }, null)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlantingSeasonStart)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PlantID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PlantID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PlantID })
-                </td>
-            </tr>
+<tr class="plantTableData" style="font-size: 2vw;">
+    
+    <td style="text-align: left;">
+        @Html.ActionLink(item.PlantName, "Index", "LogEntry", new { plantId = item.PlantID }, htmlAttributes: new { @class = "plantNameLink", @style = "color: darkslategrey; font-size: 4vw;" })
+        <br />
+        Start Planting: @Html.DisplayFor(modelItem => item.PlantingSeasonStart)
+        <br />
+        Garden: @Html.DisplayFor(modelItem => item.LocationName)
+    <br /><br />
+        <div style="text-align:center;">
+            @Html.ActionLink("Edit", "Edit", new { id = item.PlantID }, htmlAttributes: new { @class = "plantNameLink", @style = "color: darkslategrey; font-size: 2vw;" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PlantID }, htmlAttributes: new { @class = "plantNameLink", @style = "color: darkslategrey; font-size: 2vw;" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PlantID }, htmlAttributes: new { @class = "plantNameLink", @style = "color: darkslategrey; font-size: 2vw;" })
+        </div>
+            </td>
+    
+</tr>
         }
     }
 </table>
