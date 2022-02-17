@@ -70,43 +70,6 @@
     <Compile Include="IPicture.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LogEntry.cs" />
-    <Compile Include="Migrations\202202072123419_InitialCreate.cs" />
-    <Compile Include="Migrations\202202072123419_InitialCreate.Designer.cs">
-      <DependentUpon>202202072123419_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202082059431_First.cs" />
-    <Compile Include="Migrations\202202082059431_First.Designer.cs">
-      <DependentUpon>202202082059431_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202082335499_Second.cs" />
-    <Compile Include="Migrations\202202082335499_Second.Designer.cs">
-      <DependentUpon>202202082335499_Second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202090102469_Third.cs" />
-    <Compile Include="Migrations\202202090102469_Third.Designer.cs">
-      <DependentUpon>202202090102469_Third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202101759202_Fourt.cs" />
-    <Compile Include="Migrations\202202101759202_Fourt.Designer.cs">
-      <DependentUpon>202202101759202_Fourt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202102309422_Fifth.cs" />
-    <Compile Include="Migrations\202202102309422_Fifth.Designer.cs">
-      <DependentUpon>202202102309422_Fifth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202110201345_Sixth.cs" />
-    <Compile Include="Migrations\202202110201345_Sixth.Designer.cs">
-      <DependentUpon>202202110201345_Sixth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202132350434_seventh.cs" />
-    <Compile Include="Migrations\202202132350434_seventh.Designer.cs">
-      <DependentUpon>202202132350434_seventh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202132356255_eighth.cs" />
-    <Compile Include="Migrations\202202132356255_eighth.Designer.cs">
-      <DependentUpon>202202132356255_eighth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Plant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -425,35 +388,6 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202072123419_InitialCreate.resx">
-      <DependentUpon>202202072123419_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202082059431_First.resx">
-      <DependentUpon>202202082059431_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202082335499_Second.resx">
-      <DependentUpon>202202082335499_Second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202090102469_Third.resx">
-      <DependentUpon>202202090102469_Third.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202101759202_Fourt.resx">
-      <DependentUpon>202202101759202_Fourt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202102309422_Fifth.resx">
-      <DependentUpon>202202102309422_Fifth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202110201345_Sixth.resx">
-      <DependentUpon>202202110201345_Sixth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202132350434_seventh.resx">
-      <DependentUpon>202202132350434_seventh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202132356255_eighth.resx">
-      <DependentUpon>202202132356255_eighth.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.d.ts" />
