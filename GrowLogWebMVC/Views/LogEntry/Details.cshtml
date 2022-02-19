@@ -1,38 +1,17 @@
 ﻿@model GrowLog.Models.LogEntryDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Log Entries";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
-    <h4>LogEntryDetail</h4>
+    <h4>@Html.DisplayFor(model => model.PlantName) </h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OwnerId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+        @Html.HiddenFor(model => model.Name)
+        @Html.HiddenFor(model => model.PlantName)
 
         <dt>
             @Html.DisplayNameFor(model => model.DateCreated)
@@ -43,16 +22,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PlantID)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PlantID)
+            @Html.DisplayFor(model => model.Description)
         </dd>
+
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LogEntryID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Entry", "Edit", new { id = Model.LogEntryID }) |
+    @Html.ActionLink($"{Model.PlantName} Log Entries", "Index", new { plantID = Model.PlantID }) |
+    @Html.ActionLink("Plant List", "Index", "Plant")
 </p>

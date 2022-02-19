@@ -9,6 +9,8 @@ namespace GrowLog.Models
     public class LocationDetail
     {
         public int LocationID { get; set; }
+        public Guid OwnerId { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
     }

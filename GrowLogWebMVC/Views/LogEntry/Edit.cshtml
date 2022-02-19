@@ -18,14 +18,6 @@
         @Html.HiddenFor(model => model.LogEntryID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OwnerId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OwnerId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,10 +42,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PlantID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Plant.PlantName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PlantID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PlantID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Plant.PlantName, "", new { @class = "text-danger" })
             </div>
         </div>
 

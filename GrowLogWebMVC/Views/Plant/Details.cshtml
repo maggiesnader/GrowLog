@@ -4,79 +4,58 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>PlantDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PlantID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PlantID)
-        </dd>
+<div class="plantDetail content-wrapper" style="width: 50vw; margin: auto;">
+    <div class="spacer" style="height: 4.5vw"></div>
+    <h2 class="indexTitle" style="color: rgba(255, 255, 255, 0.897); background-color: darkolivegreen; width: 50vw; margin: auto;
+      font-family: 'Arbutus', sans-serif; font-size: 6vw; text-align: center; border-style: double;
+      border-width: 0.40vw; border-color: darkslategray; border-radius: 7px;">
+        @Html.DisplayFor(model => model.PlantName)
+    </h2>
+    <div class="spacer" style="height: 2vw"></div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div class="detailData" style="color:darkslategray; ">
+        <div style="display:flex;">
+            <div class="locationName" style="font-family: 'Teko', sans-serif; font-size:4vw; color:darkslategray; width: 25vw;">@Html.DisplayFor(model => model.LocationName)</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <div style="width: 25vw; text-align: end; margin-top: 1.2vw; ">
+                <h4>Planting Season</h4>
+                <p style="margin-top:-1vw;">
+                    @Html.DisplayFor(model => model.PlantingSeasonStart) to @Html.DisplayFor(model => model.PlantingSeasonEnd)
+                </p>
+            </div>
+        </div>
 
-        <dd>
+        <hr />
+        <div class="dl-horizontal" style="display: flex; width: 50vw; height: 15vw;">
+
+            @Html.HiddenFor(model => model.PlantID)
+            @Html.HiddenFor(model => model.LocationID)
+            @Html.HiddenFor(model => model.PlantName)
+            @Html.HiddenFor(model => model.LocationName)
+
+
             @Html.DisplayFor(model => model.Description)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HarvestSeasonStart)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HarvestSeasonStart)
-        </dd>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HarvestSeasonEnd)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HarvestSeasonEnd)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PlantingSeasonStart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlantingSeasonStart)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlantingSeasonEnd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlantingSeasonEnd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LocationID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LocationID)
-        </dd>
-
-    </dl>
+    </div>
+    <p>
+        @Html.ActionLink($"{Model.PlantName} Log Entries", "Index", "LogEntry", null, new { plantID = Model.PlantID, @style = "color:darkslategrey;" }) ||
+        @Html.ActionLink("Add Log Entry", "Create", "LogEntry", null, new { @class = "link ", style = "color: darkslategrey;" }) ||
+        @Html.ActionLink($"Edit {Model.PlantName}", "Edit", new { id = Model.PlantID }, htmlAttributes: new { @class = "link", @style = "color: darkslategrey;" }) ||
+        @Html.ActionLink("Plant List", "Index", null, htmlAttributes: new { @class = "link", @style = "color: darkslategrey;" }) ||
+        @Html.ActionLink("Location List", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey;" })
+    </p>
+    <style>
+        .img-fluid {
+            height: 50vh;
+            width: 50vw;
+        }
+    </style>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PlantID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
