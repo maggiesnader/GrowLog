@@ -67,6 +67,7 @@ namespace GrowLog.Services
                 return
                     new LocationDetail
                     {
+                        OwnerId = _userId,
                         LocationID = entity.LocationID,
                         Name = entity.Name,
                         Description = entity.Description
@@ -83,6 +84,7 @@ namespace GrowLog.Services
                         .Locations
                         .Single(e => e.LocationID == model.LocationID && e.OwnerId == _userId);
 
+                entity.OwnerId = _userId;
                 entity.Name = model.Name;
                 entity.Description = model.Description;
 

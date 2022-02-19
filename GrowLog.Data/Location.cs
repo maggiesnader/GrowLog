@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DHTMLX.Scheduler;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,6 +22,9 @@ namespace GrowLog.Data
 
         [Required]
         public string Description { get; set; }
+
+        [DHXJson(Ignore = true)]
+        public List<Plant> Plants { get; set; }
 
     }
 }

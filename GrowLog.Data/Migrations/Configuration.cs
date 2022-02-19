@@ -10,7 +10,6 @@ namespace GrowLog.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "GrowLogWebMVC.Data.ApplicationDbContext";
         }
 
         protected override void Seed(GrowLogWebMVC.Data.ApplicationDbContext context)

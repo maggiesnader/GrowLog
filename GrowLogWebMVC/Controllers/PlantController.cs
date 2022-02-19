@@ -1,9 +1,13 @@
-﻿using GrowLog.Models;
+﻿using GrowLog.Data;
+using GrowLog.Models;
 using GrowLog.Services;
 using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,17 +20,35 @@ namespace GrowLogWebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Plant
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search, int? locationID, int? page) //string SortingOrder, string Filter_Value, 
         {
+
             var service = CreatePlantService();
-            var model = service.GetPlants();
-            return View(model);
+            var model = service.GetPlants().Where(p => p.LocationID == locationID 
+            || locationID == null);
+            
+
+            if (searchBy == "PlantName")
+            {
+                return View(model.Where(x => x.PlantName.Contains(search) 
+                || search == null).ToList().ToPagedList(page ?? 1, 4));
+            }
+            else if (searchBy == "LocationName")
+            {
+                return View(model.Where(x => x.LocationName == search 
+                || search == null).ToList().ToPagedList(page ?? 1, 4));
+            }
+
+            int Size_Of_Page = 4;
+            int No_Of_Page = (page ?? 1);
+            return View(model.ToPagedList(No_Of_Page, Size_Of_Page));
+
         }
 
         // GET
         public ActionResult Create()
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.LocationID = new SelectList(_db.Locations, "LocationID", "Name");
             return View();
         }
 
@@ -47,7 +69,7 @@ namespace GrowLogWebMVC.Controllers
 
             ModelState.AddModelError("", "Plant could not be created.");
 
-            return View(model);
+            return View("model");
         }
 
         // GET
@@ -62,7 +84,8 @@ namespace GrowLogWebMVC.Controllers
         // GET
         public ActionResult Edit(int id)
         {
-            ViewBag.LocationId = new SelectList(_db.Locations, "LocationId", "Name");
+            ViewBag.LocationID = new SelectList(_db.Locations, "LocationID", "Name");
+
 
             var service = CreatePlantService();
             var detail = service.GetPlantById(id);
@@ -70,14 +93,18 @@ namespace GrowLogWebMVC.Controllers
                 new PlantDetail
                 {
                     PlantID = detail.PlantID,
-                    Name = detail.Name,
+                    PlantName = detail.PlantName,
                     Description = detail.Description,
-                    HarvestSeasonStart = detail.HarvestSeasonStart,
-                    HarvestSeasonEnd = detail.HarvestSeasonEnd,
                     PlantingSeasonStart = detail.PlantingSeasonStart,
                     PlantingSeasonEnd = detail.PlantingSeasonEnd,
                     TypeOfPlantCategory = detail.TypeOfPlantCategory,
-                    LocationID = detail.LocationID
+                    LocationID = detail.LocationID,
+
+
+                    //HarvestSeasonStart = detail.HarvestSeasonStart,
+                    //HarvestSeasonEnd = detail.HarvestSeasonEnd,
+                    //FileContent = detail.FileContent,
+                    //File = detail.File,
                 };
             return View(model);
         }

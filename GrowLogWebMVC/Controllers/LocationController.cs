@@ -1,6 +1,9 @@
 ﻿using GrowLog.Models;
 using GrowLog.Services;
+using GrowLogWebMVC.Data;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +15,18 @@ namespace GrowLogWebMVC.Controllers
     [Authorize]
     public class LocationController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+        
         // GET: Location
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var service = CreateLocationService();
 
-            var model = service.GetLocations();
-            return View(model);
+            var model = service.GetLocations().OrderBy(m => m.Name);
+
+            int Size_Of_Page = 4;
+            int No_Of_Page = (page ?? 1);
+            return View(model.ToPagedList(No_Of_Page, Size_Of_Page));
         }
 
         // GET
