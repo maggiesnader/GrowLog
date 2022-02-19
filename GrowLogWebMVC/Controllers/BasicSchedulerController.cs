@@ -21,8 +21,8 @@ namespace GrowLogWebMVC.Controllers
             var sched = new DHXScheduler(this);
             sched.Skin = DHXScheduler.Skins.Terrace;
 
-            //sched.Config.first_hour = 6;
-            //sched.Config.last_hour = 20;
+            sched.Config.first_hour = 6;
+            sched.Config.last_hour = 7;
 
             //sched.EnableDynamicLoading(SchedulerDataLoader.DynamicalLoadingMode.Month);
 

@@ -2,32 +2,37 @@
     ViewBag.Title = "Home";
 }
 
-    <div class="spacer" style="height: 4.5vw"></div>
+<div class="spacer" style="height: 4.5vw"></div>
 
 
-    <div class="jumbotron" style="background-color: darkolivegreen; color: rgba(255, 255, 255, 0.897); width: 75vw; height: 35vw; margin: auto;">
-        <h1 class="text-center" style=" font-size: 11vw; margin:auto;">SEEDLING</h1>
-        <div class="logoWrapper"style="width: 52vw; max-height: 2vw; margin:auto;" >
-            <div class="spacer" style="height: 1vw"></div>
-            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
-            <div class="spacer" style="height: 0.75vw"></div>
-            <p class="lead text-center" style="font-size: 2vw;">a grow log</p>
-            <div class="spacer" style="height: 2vw; margin: -1vw;"></div>
-            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
-            <div class="spacer" style="height: 1vw"></div>
-            <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
-        </div>
-
-    </div>
+<div class="jumbotron" style="background-color: darkolivegreen; color: rgba(255, 255, 255, 0.897); width: 75vw; height: 35vw; 
+margin: auto; border-style:double; border-width: 0.5vw; border-color:darkslategray; border-radius :10px;">
     
-    <div class="spacer" style="height: 4vw;"></div>
+    <div class="spacer" style="height: 4.5vw"></div>
+    
+    <h1 class="text-center" style=" font-size: 11vw; margin:auto;">SEEDLING</h1>
+    <div class="logoWrapper" style="width: 52vw; max-height: 2vw; margin:auto;">
+        <div class="spacer" style="height: 1vw"></div>
+        <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+        <div class="spacer" style="height: 0.75vw"></div>
+        <p class="lead text-center" style="font-size: 2vw;">a grow log</p>
+        <div class="spacer" style="height: 2vw; margin: -1vw;"></div>
+        <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+        <div class="spacer" style="height: 1vw"></div>
+        <p style="border: solid; width: 52vw; margin: auto; border-color: rgba(255, 255, 255, 0.897); border-width: 2px "></p>
+    </div>
+
+</div>
+
+<div class="spacer" style="height: 4vw;"></div>
 
 <div class="row d-flex flex-row" style="color: rgba(255, 255, 255, 0.897);">
     <div class="feature">
-        <h2 class="head text-center" >@Html.ActionLink("Gardens", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey; font-size: 5vw;" })</h2>
+        <h2 class="head text-center">@Html.ActionLink("Gardens", "Index", "Location", null, new { @class = "link ", style = "color: darkslategrey; font-size: 5vw;" })</h2>
         <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
         <div class="spacer" style="height: 15px;"></div>
-        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height:20vw; align-content: center; margin: auto; padding:3vw; background-color:darkolivegreen; border-radius:7px;">
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; 
+            border-style: double; border-width: 0.40vw; border-color: darkslategray; border-radius: 7px;">
             Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
             Dandelion cucumber earthnut pea peanut soko zucchini.
             <br /><br />
@@ -39,7 +44,8 @@
         <h2 class="head text-center">@Html.ActionLink("Plants", "Index", "Plant", null, new { @class = "link", style = "color: darkslategrey; font-size: 5vw;" })</h2>
         <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
         <div class="spacer" style="height: 15px;"></div>
-        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; border-radius: 7px; ">
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; 
+            background-color: darkolivegreen; border-style: double; border-width: 0.40vw; border-color: darkslategray; border-radius: 7px; ">
             Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.
             Celery potato scallion desert raisin.
             <br /><br />
@@ -52,7 +58,8 @@
         <h2 class="head text-center">@Html.ActionLink("Log", "Index", "LogEntry", null, new { @class = "link", style = "color: darkslategrey; font-size: 5vw;" })</h2>
         <p style="border: solid; width: 40vw; margin:auto; border-color: darkolivegreen; border-width: 2px "></p>
         <div class="spacer" style="height: 15px;"></div>
-        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; border-radius: 7px; ">
+        <p class="info text-center" style="font-size: 1.5vw; width: 40vw; height: 20vw; align-content: center; margin: auto; padding: 3vw; background-color: darkolivegreen; 
+            border-style: double; border-width: 0.40vw; border-color: darkslategray; border-radius: 7px; ">
             Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring onion bush tomato
             kale radicchio turnip chicory salsify pea sprouts.
             <br /><br />

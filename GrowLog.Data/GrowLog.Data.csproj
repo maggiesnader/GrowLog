@@ -64,12 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicSchedulerContext.cs" />
     <Compile Include="ENUMs\PlantCategory.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IPicture.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LogEntry.cs" />
+    <Compile Include="Migrations\202202170247208_intialCreate.cs" />
+    <Compile Include="Migrations\202202170247208_intialCreate.Designer.cs">
+      <DependentUpon>202202170247208_intialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Plant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -391,6 +395,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202170247208_intialCreate.resx">
+      <DependentUpon>202202170247208_intialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

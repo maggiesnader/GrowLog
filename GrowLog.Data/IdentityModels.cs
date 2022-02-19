@@ -33,7 +33,7 @@ namespace GrowLogWebMVC.Data
         public DbSet<Location>  Locations { get; set; }
         public DbSet<Plant> Plants { get; set; }
         public DbSet<LogEntry> LogEntries { get; set;}
-        public DbSet<BasicSchedulerContext> basicSchedulerContexts { get; set; }
+        //public DbSet<BasicSchedulerContext> basicSchedulerContexts { get; set; }
 
 
 
